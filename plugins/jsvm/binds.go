@@ -777,7 +777,7 @@ func httpClientBinds(vm *goja.Runtime) {
 		JSON       any                     `json:"json"`
 		Headers    map[string][]string     `json:"headers"`
 		Cookies    map[string]*http.Cookie `json:"cookies"`
-		Raw        string                  `json:"raw"`
+		Raw        []byte                  `json:"raw"`
 		StatusCode int                     `json:"statusCode"`
 	}
 
@@ -882,7 +882,7 @@ func httpClientBinds(vm *goja.Runtime) {
 			StatusCode: res.StatusCode,
 			Headers:    map[string][]string{},
 			Cookies:    map[string]*http.Cookie{},
-			Raw:        string(bodyRaw),
+			Raw:        bodyRaw,
 		}
 
 		for k, v := range res.Header {
